@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Comando do jogo</title>
+  <link rel="stylesheet" href="sdpi.css" />
+</head>
+<body>
+  <div class="sdpi-wrapper">
+    <div class="sdpi-item" id="linha-cmd">
+      <div class="sdpi-item-label">Comando</div>
+      <select class="sdpi-item-value" id="cmd"></select>
+    </div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Ao apertar</div>
+      <select class="sdpi-item-value" id="modo">
+        <option value="">Padrão do comando</option>
+        <option value="toque">Toque (aperta e solta)</option>
+        <option value="segurar">Segurar (enquanto o dedo estiver)</option>
+      </select>
+    </div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Título</div>
+      <input class="sdpi-item-value" id="titulo" type="text" maxlength="24" placeholder="nome do comando" />
+    </div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label"></div>
+      <div class="sdpi-item-value"><small id="nota">Carregando a lista de comandos…</small></div>
+    </div>
+  </div>
+  <script src="pi.js"></script>
+  <script>
+    const el = (id) => document.getElementById(id);
+    const generica = () => PI.acao() === "comando";
+    PI.onSettings((s) => {
+      el("linha-cmd").style.display = generica() ? "" : "none";
+      el("modo").value = s.modo || "";
+      el("titulo").value = s.titulo || "";
+      if (s.cmd) el("cmd").value = s.cmd;
+    });
+    PI.onCatalogo((p, s) => {
+      const sel = el("cmd");
+      sel.innerHTML = "";
+      for (const [gid, g] of Object.entries(p.catalogo.grupos)) {
+        const og = document.createElement("optgroup");
+        og.label = g.nome;
+        for (const c of p.catalogo.comandos.filter((x) => x.grupo === gid)) {
+          const o = document.createElement("option");
+          o.value = c.cmd;
+          o.textContent = c.nome + (c.tecla ? "  (" + c.tecla + ")" : "");
+          og.appendChild(o);
+        }
+        sel.appendChild(og);
+      }
+      sel.value = s.cmd || "engine";
+      el("nota").textContent = p.conectado
+        ? "Conectado ao " + (p.jogo || "jogo") + ". O comando vai direto para o jogo, sem simular teclado."
+        : "Jogo fechado (ou a ponte não está instalada). A tecla funciona assim que o jogo abrir.";
+    });
+    el("cmd").addEventListener("change", () => PI.save({ cmd: el("cmd").value }));
+    el("modo").addEventListener("change", () => PI.save({ modo: el("modo").value }));
+    el("titulo").addEventListener("change", () => PI.save({ titulo: el("titulo").value.trim() }));
+  </script>
+</body>
+</html>

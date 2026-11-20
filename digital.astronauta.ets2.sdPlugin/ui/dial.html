@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Dial</title>
+  <link rel="stylesheet" href="sdpi.css" />
+</head>
+<body>
+  <div class="sdpi-wrapper">
+    <div class="sdpi-item" id="linha-grupo" style="display:none">
+      <div class="sdpi-item-label">Informações</div>
+      <select class="sdpi-item-value" id="grupo"></select>
+    </div>
+    <div class="sdpi-item" id="linha-lado" style="display:none">
+      <div class="sdpi-item-label">Janela</div>
+      <select class="sdpi-item-value" id="lado">
+        <option value="0">As duas</option>
+        <option value="1">Esquerda</option>
+        <option value="2">Direita</option>
+      </select>
+    </div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label"></div>
+      <div class="sdpi-item-value"><small id="nota">Girar, apertar e tocar na tela fazem coisas diferentes; a descrição aparece na própria tela do dial.</small></div>
+    </div>
+  </div>
+  <script src="pi.js"></script>
+  <script>
+    const el = (id) => document.getElementById(id);
+    PI.onSettings((s) => {
+      el("linha-grupo").style.display = PI.acao() === "dialinfo" ? "" : "none";
+      el("linha-lado").style.display = PI.acao() === "dialjanelas" ? "" : "none";
+      el("grupo").value = s.grupo || "viagem";
+      el("lado").value = String(s.lado || 0);
+    });
+    PI.onCatalogo((p, s) => {
+      const sel = el("grupo");
+      sel.innerHTML = "";
+      for (const [gid, nome] of Object.entries(p.catalogo.gruposInfo)) {
+        const o = document.createElement("option");
+        o.value = gid;
+        o.textContent = nome;
+        sel.appendChild(o);
+      }
+      sel.value = s.grupo || "viagem";
+    });
+    el("grupo").addEventListener("change", () => PI.save({ grupo: el("grupo").value, cycleIndex: 0 }));
+    el("lado").addEventListener("change", () => PI.save({ lado: Number(el("lado").value) }));
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Painel</title>
+  <link rel="stylesheet" href="sdpi.css" />
+</head>
+<body>
+  <div class="sdpi-wrapper">
+    <div class="sdpi-item" id="linha-campo">
+      <div class="sdpi-item-label">Mostrar</div>
+      <select class="sdpi-item-value" id="campo"></select>
+    </div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label"></div>
+      <div class="sdpi-item-value"><small id="nota">Leitura ao vivo do jogo. No ATS, as unidades viram mph, milhas, galões e dólar.</small></div>
+    </div>
+  </div>
+  <script src="pi.js"></script>
+  <script>
+    const el = (id) => document.getElementById(id);
+    PI.onSettings((s) => {
+      el("linha-campo").style.display = PI.acao() === "painel" ? "" : "none";
+      if (s.campo) el("campo").value = s.campo;
+    });
+    PI.onCatalogo((p, s) => {
+      const sel = el("campo");
+      sel.innerHTML = "";
+      for (const [gid, nome] of Object.entries(p.catalogo.gruposInfo)) {
+        const og = document.createElement("optgroup");
+        og.label = nome;
+        for (const c of p.catalogo.campos.filter((x) => x.grupo === gid)) {
+          const o = document.createElement("option");
+          o.value = c.id;
+          o.textContent = c.nome;
+          og.appendChild(o);
+        }
+        sel.appendChild(og);
+      }
+      sel.value = s.campo || "velocidade";
+    });
+    el("campo").addEventListener("change", () => PI.save({ campo: el("campo").value }));
+  </script>
+</body>
+</html>

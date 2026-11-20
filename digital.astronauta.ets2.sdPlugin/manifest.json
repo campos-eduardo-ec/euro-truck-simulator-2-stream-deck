@@ -1,0 +1,842 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "Name": "Caminhão · ETS2 e ATS",
+  "UUID": "digital.astronauta.ets2",
+  "Version": "1.0.0.0",
+  "Author": "Eduardo Campos",
+  "Description": "Euro Truck Simulator 2 e American Truck Simulator no Stream Deck +: comandos diretos no jogo (sem simular teclado) e painel ao vivo. Precisa da ponte astronauta_ets2 instalada no jogo.",
+  "Category": "Caminhão",
+  "CategoryIcon": "imgs/category",
+  "Icon": "imgs/icon",
+  "URL": "https://github.com/campos-eduardo-ec/euro-truck-simulator-2-stream-deck",
+  "SDKVersion": 2,
+  "CodePath": "bin/plugin.js",
+  "Nodejs": {
+    "Version": "20"
+  },
+  "Software": {
+    "MinimumVersion": "6.5"
+  },
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "12"
+    }
+  ],
+  "Profiles": [
+    {
+      "Name": "profiles/Astronauta - Caminhao",
+      "DeviceType": 7,
+      "ReadOnly": false,
+      "DontAutoSwitchWhenInstalled": false
+    }
+  ],
+  "Actions": [
+    {
+      "Name": "Ignição",
+      "UUID": "digital.astronauta.ets2.ignicao",
+      "Icon": "imgs/action",
+      "Tooltip": "Dirigir: Ignição (no teclado: E). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Freio de mão",
+      "UUID": "digital.astronauta.ets2.freiomao",
+      "Icon": "imgs/action",
+      "Tooltip": "Dirigir: Freio de mão (no teclado: Espaço). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Freio motor",
+      "UUID": "digital.astronauta.ets2.freiomotor",
+      "Icon": "imgs/action",
+      "Tooltip": "Dirigir: Freio motor (no teclado: B). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Piloto automático",
+      "UUID": "digital.astronauta.ets2.piloto",
+      "Icon": "imgs/action",
+      "Tooltip": "Dirigir: Piloto automático (no teclado: C). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Buzina",
+      "UUID": "digital.astronauta.ets2.buzina",
+      "Icon": "imgs/action",
+      "Tooltip": "Dirigir: Buzina (no teclado: H). Mostra o estado ao vivo quando o jogo informa. Segure a tecla.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Buzina a ar",
+      "UUID": "digital.astronauta.ets2.buzinaar",
+      "Icon": "imgs/action",
+      "Tooltip": "Dirigir: Buzina a ar (no teclado: N). Mostra o estado ao vivo quando o jogo informa. Segure a tecla.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Pisca esquerdo",
+      "UUID": "digital.astronauta.ets2.piscaesq",
+      "Icon": "imgs/action",
+      "Tooltip": "Luzes: Pisca esquerdo (no teclado: [). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Pisca direito",
+      "UUID": "digital.astronauta.ets2.piscadir",
+      "Icon": "imgs/action",
+      "Tooltip": "Luzes: Pisca direito (no teclado: ]). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Alerta",
+      "UUID": "digital.astronauta.ets2.alerta",
+      "Icon": "imgs/action",
+      "Tooltip": "Luzes: Alerta (no teclado: F). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Faróis",
+      "UUID": "digital.astronauta.ets2.farois",
+      "Icon": "imgs/action",
+      "Tooltip": "Luzes: Faróis (no teclado: L). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Farol alto",
+      "UUID": "digital.astronauta.ets2.farolalto",
+      "Icon": "imgs/action",
+      "Tooltip": "Luzes: Farol alto (no teclado: K). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Lampejo",
+      "UUID": "digital.astronauta.ets2.lampejo",
+      "Icon": "imgs/action",
+      "Tooltip": "Luzes: Lampejo (no teclado: J). Mostra o estado ao vivo quando o jogo informa. Segure a tecla.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Giroflex",
+      "UUID": "digital.astronauta.ets2.giroflex",
+      "Icon": "imgs/action",
+      "Tooltip": "Luzes: Giroflex (no teclado: O). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Limpador",
+      "UUID": "digital.astronauta.ets2.limpador",
+      "Icon": "imgs/action",
+      "Tooltip": "Luzes: Limpador (no teclado: P). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Engatar / soltar reboque",
+      "UUID": "digital.astronauta.ets2.reboque",
+      "Icon": "imgs/action",
+      "Tooltip": "Reboque e eixos: Engatar / soltar reboque (no teclado: T). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Bloqueio do diferencial",
+      "UUID": "digital.astronauta.ets2.diferencial",
+      "Icon": "imgs/action",
+      "Tooltip": "Reboque e eixos: Bloqueio do diferencial (no teclado: V). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Eixo elevável",
+      "UUID": "digital.astronauta.ets2.eixo",
+      "Icon": "imgs/action",
+      "Tooltip": "Reboque e eixos: Eixo elevável (no teclado: U). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Eixo elevável do reboque",
+      "UUID": "digital.astronauta.ets2.eixoreboque",
+      "Icon": "imgs/action",
+      "Tooltip": "Reboque e eixos: Eixo elevável do reboque. Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Rádio: liga/desliga",
+      "UUID": "digital.astronauta.ets2.radio",
+      "Icon": "imgs/action",
+      "Tooltip": "Cabine e rádio: Rádio: liga/desliga (no teclado: R). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Trocar câmera",
+      "UUID": "digital.astronauta.ets2.camera",
+      "Icon": "imgs/action",
+      "Tooltip": "Câmera: Trocar câmera (no teclado: 9). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Retrovisores na tela",
+      "UUID": "digital.astronauta.ets2.espelhos",
+      "Icon": "imgs/action",
+      "Tooltip": "Câmera: Retrovisores na tela (no teclado: F2). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Menu / pausa",
+      "UUID": "digital.astronauta.ets2.menu",
+      "Icon": "imgs/action",
+      "Tooltip": "Jogo e Route Advisor: Menu / pausa (no teclado: Esc). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Mapa",
+      "UUID": "digital.astronauta.ets2.mapa",
+      "Icon": "imgs/action",
+      "Tooltip": "Jogo e Route Advisor: Mapa (no teclado: M). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Ativar (Enter)",
+      "UUID": "digital.astronauta.ets2.ativar",
+      "Icon": "imgs/action",
+      "Tooltip": "Jogo e Route Advisor: Ativar (Enter) (no teclado: Enter). Mostra o estado ao vivo quando o jogo informa.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Comando do jogo (qualquer)",
+      "UUID": "digital.astronauta.ets2.comando",
+      "Icon": "imgs/action",
+      "Tooltip": "Qualquer um dos 122 comandos do jogo. Escolha no inspetor.",
+      "PropertyInspectorPath": "ui/comando.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Velocidade",
+      "UUID": "digital.astronauta.ets2.velocidade",
+      "Icon": "imgs/action",
+      "Tooltip": "Velocidade, ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Limite de velocidade",
+      "UUID": "digital.astronauta.ets2.limite",
+      "Icon": "imgs/action",
+      "Tooltip": "Limite de velocidade, ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Hora no jogo",
+      "UUID": "digital.astronauta.ets2.horario",
+      "Icon": "imgs/action",
+      "Tooltip": "Hora no jogo, ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Próximo descanso",
+      "UUID": "digital.astronauta.ets2.descanso",
+      "Icon": "imgs/action",
+      "Tooltip": "Próximo descanso, ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Dano da carga",
+      "UUID": "digital.astronauta.ets2.danocarga",
+      "Icon": "imgs/action",
+      "Tooltip": "Dano da carga, ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Combustível",
+      "UUID": "digital.astronauta.ets2.combustivel",
+      "Icon": "imgs/action",
+      "Tooltip": "Combustível, ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Marcha",
+      "UUID": "digital.astronauta.ets2.marcha",
+      "Icon": "imgs/action",
+      "Tooltip": "Marcha, ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Pressão do ar",
+      "UUID": "digital.astronauta.ets2.ar",
+      "Icon": "imgs/action",
+      "Tooltip": "Pressão do ar, ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Odômetro",
+      "UUID": "digital.astronauta.ets2.odometro",
+      "Icon": "imgs/action",
+      "Tooltip": "Odômetro, ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel · Desgaste (pior peça)",
+      "UUID": "digital.astronauta.ets2.desgaste",
+      "Icon": "imgs/action",
+      "Tooltip": "Desgaste (pior peça), ao vivo do jogo.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Painel (qualquer leitura)",
+      "UUID": "digital.astronauta.ets2.painel",
+      "Icon": "imgs/action",
+      "Tooltip": "Escolha no inspetor o que mostrar: viagem, entrega, caminhão ou desgaste.",
+      "PropertyInspectorPath": "ui/painel.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Piloto automático",
+      "UUID": "digital.astronauta.ets2.dialpiloto",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: ajustar velocidade. Apertar: liga/desliga. Tocar: retomar.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Ajustar velocidade",
+          "Push": "Liga/desliga",
+          "Touch": "Retomar"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Retarder e freio motor",
+      "UUID": "digital.astronauta.ets2.dialretarder",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: nível do retarder. Apertar: freio motor. Tocar: retarder automático.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Nível do retarder",
+          "Push": "Freio motor",
+          "Touch": "Retarder automático"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Faróis",
+      "UUID": "digital.astronauta.ets2.dialluzes",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: trocar modo dos faróis. Apertar: farol alto. Tocar: lampejo.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Trocar modo dos faróis",
+          "Push": "Farol alto",
+          "Touch": "Lampejo"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Limpador",
+      "UUID": "digital.astronauta.ets2.diallimpador",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: velocidade do limpador. Apertar: trocar. Tocar: trocar.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Velocidade do limpador",
+          "Push": "Trocar",
+          "Touch": "Trocar"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Câmera",
+      "UUID": "digital.astronauta.ets2.dialcamera",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: trocar câmera. Apertar: câmera da cabine. Tocar: recentrar.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Trocar câmera",
+          "Push": "Câmera da cabine",
+          "Touch": "Recentrar"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Rádio",
+      "UUID": "digital.astronauta.ets2.dialradio",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: volume. Apertar: liga/desliga. Tocar: próxima estação.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Volume",
+          "Push": "Liga/desliga",
+          "Touch": "Próxima estação"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Câmbio",
+      "UUID": "digital.astronauta.ets2.dialcambio",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: subir/descer marcha. Apertar: neutro. Tocar: automático/manual.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Subir/descer marcha",
+          "Push": "Neutro",
+          "Touch": "Automático/manual"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Suspensão",
+      "UUID": "digital.astronauta.ets2.dialsuspensao",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: subir/descer. Apertar: nivelar. Tocar: nivelar.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Subir/descer",
+          "Push": "Nivelar",
+          "Touch": "Nivelar"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Janelas",
+      "UUID": "digital.astronauta.ets2.dialjanelas",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: abrir/fechar. Apertar: trocar lado. Tocar: trocar lado.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Abrir/fechar",
+          "Push": "Trocar lado",
+          "Touch": "Trocar lado"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    },
+    {
+      "Name": "Dial · Informações",
+      "UUID": "digital.astronauta.ets2.dialinfo",
+      "Icon": "imgs/action",
+      "Tooltip": "Girar: trocar informação. Apertar: próxima. Tocar: voltar ao início.",
+      "PropertyInspectorPath": "ui/dial.html",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "layouts/clean.json",
+        "TriggerDescription": {
+          "Rotate": "Trocar informação",
+          "Push": "Próxima",
+          "Touch": "Voltar ao início"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/key"
+        }
+      ]
+    }
+  ]
+}
